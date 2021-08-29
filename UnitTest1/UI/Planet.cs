@@ -41,7 +41,7 @@ namespace UnitTest1.UI
 
         public double Radius
         {
-            get => -_radius;
+            get => _radius;
 
             private set { }
         }

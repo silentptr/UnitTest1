@@ -34,8 +34,8 @@ namespace UnitTest1.UI.Pages
                 string name = element.FindElement(By.TagName("h2")).Text;
                 string distanceStr = element.FindElement(By.ClassName("distance")).Text;
                 string radiusStr = element.FindElement(By.ClassName("radius")).Text;
-                long distance = long.Parse(distanceStr.Substring(0, distanceStr.Length - 3), NumberStyles.AllowThousands);
-                double radius = double.Parse(radiusStr.Substring(0, radiusStr.Length - 3), NumberStyles.AllowThousands | NumberStyles.AllowDecimalPoint);
+                long distance = long.Parse(distanceStr.Substring(0, distanceStr.Length - 3), NumberStyles.Number);
+                double radius = double.Parse(radiusStr.Substring(0, radiusStr.Length - 3), NumberStyles.Number);
                 _planets.Add(new Planet(element, name, distance, radius));
             }
         }

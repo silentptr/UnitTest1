@@ -16,13 +16,14 @@ namespace UnitTest1
     public class UnitTest1
     {
         private IWebDriver _driver;
+        const string Url = "https://d21vtxezke9qd9.cloudfront.net/#/";
 
         [TestInitialize]
         public void SetupTest()
         {
             Trace.Listeners.Add(new TextWriterTraceListener(Console.Out));
             _driver = new ChromeDriver();
-            _driver.Url = "https://d21vtxezke9qd9.cloudfront.net/#/";
+            _driver.Url = Url;
             _driver.Manage().Window.Maximize();
         }
 
@@ -41,6 +42,8 @@ namespace UnitTest1
                 Assert.AreEqual("Exploring " + planet.Name, popup.Text);
                 new WebDriverWait(_driver, TimeSpan.FromSeconds(10.0d)).Until(_ => !popup.Displayed);
             }
+
+            Assert.AreEqual(6371.0d, planetPage.GetPlanetBy(p => p.Name == "Earth").Radius);
         }
 
         [TestCleanup]
